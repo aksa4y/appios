@@ -29,7 +29,7 @@ extension Color {
     static let moveCream = Color(red: 0.91, green: 0.91, blue: 0.82)
 }
 
-enum ActivityCategory: String, CaseIterable, Identifiable {
+enum ActivityCategory: String, CaseIterable, Identifiable, Hashable {
     case all = "Все"
     case running = "Бег"
     case gym = "Зал"
@@ -409,7 +409,7 @@ struct ActivityDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isSaved = false
 
-    private var joined: Bool { joinedRaw.split(separator: ",").contains(Substring(activity.id)) }
+    private var joined: Bool { Set(joinedRaw.split(separator: ",").map(String.init)).contains(activity.id) }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -805,7 +805,13 @@ struct ProfileView: View {
 struct ProfileSettingRow<Accessory: View>: View {
     let symbol: String
     let title: String
-    @ViewBuilder let accessory: Accessory
+    let accessory: Accessory
+
+    init(symbol: String, title: String, @ViewBuilder accessory: () -> Accessory) {
+        self.symbol = symbol
+        self.title = title
+        self.accessory = accessory()
+    }
 
     var body: some View {
         HStack(spacing: 12) {
