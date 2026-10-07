@@ -14,7 +14,7 @@ struct MoveApp: App {
                 }
             }
             .preferredColorScheme(.dark)
-            .tint(.moveLime)
+            .tint(Color.moveLime)
         }
     }
 }
@@ -97,7 +97,7 @@ struct MainTabView: View {
             ProgressDashboardView().tabItem { Label(MoveTab.progress.rawValue, systemImage: MoveTab.progress.symbol) }.tag(MoveTab.progress)
             ProfileView().tabItem { Label(MoveTab.profile.rawValue, systemImage: MoveTab.profile.symbol) }.tag(MoveTab.profile)
         }
-        .tint(.moveLime)
+        .tint(Color.moveLime)
         .toolbarBackground(.visible, for: .tabBar)
         .toolbarBackground(Color.moveBlack, for: .tabBar)
     }
@@ -124,7 +124,7 @@ struct OnboardingView: View {
                             .foregroundStyle(.black)
                             .padding(.horizontal, 15)
                             .padding(.vertical, 22)
-                            .background(.moveLime, in: Capsule())
+                            .background(Color.moveLime, in: Capsule())
                             .rotationEffect(.degrees(12))
                     }
                     .padding(.top, 18)
@@ -165,7 +165,7 @@ struct OnboardingView: View {
                             .foregroundStyle(.white)
                         Text("Открывай активности рядом и двигайся к своим целям — по одному шагу за раз.")
                             .font(.system(size: 16))
-                            .foregroundStyle(.moveMuted)
+                            .foregroundStyle(Color.moveMuted)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     .padding(.bottom, 24)
@@ -180,7 +180,7 @@ struct OnboardingView: View {
                         }
                         .foregroundStyle(.black)
                         .padding(.vertical, 18)
-                        .background(.moveLime, in: RoundedRectangle(cornerRadius: 17, style: .continuous))
+                        .background(Color.moveLime, in: RoundedRectangle(cornerRadius: 17, style: .continuous))
                     }
                     .buttonStyle(.plain)
                     .accessibilityHint("Открывает подборку активностей")
@@ -234,13 +234,13 @@ struct ExploreView: View {
                                 .font(.system(size: 17, weight: .semibold, design: .rounded))
                             Text("каждый день")
                                 .font(.system(size: 24, weight: .black, design: .rounded))
-                                .foregroundStyle(.moveLime)
+                                .foregroundStyle(Color.moveLime)
                         }
                         Spacer()
                         Text("ДОБРАЯ\nПРИВЫЧКА")
                             .font(.system(size: 11, weight: .bold, design: .rounded))
                             .multilineTextAlignment(.trailing)
-                            .foregroundStyle(.moveMuted)
+                            .foregroundStyle(Color.moveMuted)
                     }
                     .padding(.top, 4)
                 }
@@ -259,14 +259,14 @@ struct ExploreView: View {
     private var header: some View {
         HStack {
             HStack(spacing: 7) {
-                Circle().fill(.moveLime).frame(width: 9, height: 9)
+                Circle().fill(Color.moveLime).frame(width: 9, height: 9)
                 Text("MOVE").font(.system(size: 15, weight: .black, design: .rounded)).tracking(2.2)
             }
             Spacer()
             Button {} label: {
                 Image(systemName: "location.fill")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.moveLime)
+                    .foregroundStyle(Color.moveLime)
                     .padding(11)
                     .background(Color.moveCard, in: Circle())
             }
@@ -309,7 +309,7 @@ struct ActivityCard: View {
                             .font(.system(size: 11, weight: .black))
                             .foregroundStyle(.black)
                             .padding(8)
-                            .background(.moveLime, in: Circle())
+                            .background(Color.moveLime, in: Circle())
                             .padding(9)
                     }
                 }
@@ -330,7 +330,7 @@ struct ActivityCard: View {
                     Spacer(minLength: 2)
                     Image(systemName: "arrow.up.right")
                         .font(.system(size: 12, weight: .black))
-                        .foregroundStyle(activity.limeArtwork ? .moveLime : .black)
+                        .foregroundStyle(activity.limeArtwork ? Color.moveLime : .black)
                         .frame(width: 30, height: 30)
                         .background(activity.limeArtwork ? Color.black : Color.moveLime, in: Circle())
                 }
@@ -382,7 +382,7 @@ struct ActivityArtwork: View {
 }
 
 struct AvatarStack: View {
-    private let colors: [Color] = [.moveBlack, .gray, .moveMuted]
+    private let colors: [Color] = [Color.moveBlack, .gray, Color.moveMuted]
     var body: some View {
         HStack(spacing: -7) {
             ForEach(colors.indices, id: \.self) { index in
@@ -432,7 +432,7 @@ struct ActivityDetailView: View {
                     VStack {
                         Spacer()
                         HStack {
-                            Image(systemName: "sparkles").foregroundStyle(.moveLime)
+                            Image(systemName: "sparkles").foregroundStyle(Color.moveLime)
                             Text("ДВИЖЕНИЕ РЯДОМ")
                                 .font(.system(size: 11, weight: .black, design: .rounded))
                                 .tracking(2)
@@ -450,7 +450,7 @@ struct ActivityDetailView: View {
                             Text(activity.title)
                                 .font(.system(size: 30, weight: .black, design: .rounded))
                                 .tracking(-0.7)
-                            Text(activity.venue).font(.system(size: 16)).foregroundStyle(.moveMuted)
+                            Text(activity.venue).font(.system(size: 16)).foregroundStyle(Color.moveMuted)
                         }
                         Spacer()
                         VStack(spacing: 3) {
@@ -462,13 +462,13 @@ struct ActivityDetailView: View {
                         .foregroundStyle(.black)
                         .padding(.horizontal, 14)
                         .padding(.vertical, 12)
-                        .background(.moveLime, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                        .background(Color.moveLime, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                     }
                     HStack(spacing: 8) {
                         AvatarStack()
                         Text("+\(activity.people) идут")
                             .font(.system(size: 13, weight: .medium))
-                            .foregroundStyle(.moveMuted)
+                            .foregroundStyle(Color.moveMuted)
                         Spacer()
                     }
                     HStack(spacing: 0) {
@@ -482,7 +482,7 @@ struct ActivityDetailView: View {
                     .background(Color.moveCard, in: RoundedRectangle(cornerRadius: 17, style: .continuous))
                     Text(activity.description)
                         .font(.system(size: 15))
-                        .foregroundStyle(.moveMuted)
+                        .foregroundStyle(Color.moveMuted)
                         .lineSpacing(4)
                     Button(action: toggleJoin) {
                         HStack(spacing: 9) {
@@ -539,7 +539,7 @@ struct MetricCell: View {
     var body: some View {
         VStack(spacing: 5) {
             Text(value).font(.system(size: 14, weight: .bold, design: .rounded)).lineLimit(1).minimumScaleFactor(0.8)
-            Text(label).font(.system(size: 11)).foregroundStyle(.moveMuted)
+            Text(label).font(.system(size: 11)).foregroundStyle(Color.moveMuted)
         }
         .frame(maxWidth: .infinity)
     }
@@ -569,7 +569,7 @@ struct ScheduleView: View {
                                 VStack(spacing: 8) {
                                     Text(["ПН","ВТ","СР","ЧТ","ПТ","СБ","ВС"][day - 10])
                                         .font(.system(size: 10, weight: .bold))
-                                        .foregroundStyle(.moveMuted)
+                                        .foregroundStyle(Color.moveMuted)
                                     Text("\(day)")
                                         .font(.system(size: 15, weight: .bold, design: .rounded))
                                         .foregroundStyle(selectedDate == day ? .black : .white)
@@ -584,7 +584,7 @@ struct ScheduleView: View {
                     HStack {
                         Text("СУББОТА, 12 ИЮЛЯ").font(.system(size: 12, weight: .bold, design: .rounded)).tracking(1.3)
                         Spacer()
-                        Text("\(joinedActivities.count) событий").font(.system(size: 12)).foregroundStyle(.moveMuted)
+                        Text("\(joinedActivities.count) событий").font(.system(size: 12)).foregroundStyle(Color.moveMuted)
                     }
                     if joinedActivities.isEmpty {
                         EmptyScheduleCard()
@@ -616,10 +616,10 @@ struct ScheduleView: View {
 struct EmptyScheduleCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 11) {
-            Image(systemName: "calendar.badge.plus").font(.system(size: 27, weight: .medium)).foregroundStyle(.moveLime)
+            Image(systemName: "calendar.badge.plus").font(.system(size: 27, weight: .medium)).foregroundStyle(Color.moveLime)
             Text("Пока план свободен").font(.system(size: 18, weight: .bold, design: .rounded))
             Text("Выбери активность и присоединись — она появится здесь.")
-                .font(.system(size: 14)).foregroundStyle(.moveMuted)
+                .font(.system(size: 14)).foregroundStyle(Color.moveMuted)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(20)
@@ -632,15 +632,15 @@ struct ScheduleActivityRow: View {
     var body: some View {
         HStack(spacing: 13) {
             RoundedRectangle(cornerRadius: 13)
-                .fill(.moveLime)
+                .fill(Color.moveLime)
                 .frame(width: 54, height: 54)
                 .overlay(Image(systemName: activity.symbol).font(.system(size: 22, weight: .bold)).foregroundStyle(.black))
             VStack(alignment: .leading, spacing: 4) {
                 Text(activity.title).font(.system(size: 16, weight: .bold, design: .rounded)).foregroundStyle(.white)
-                Text("\(activity.venue) · \(activity.time)").font(.system(size: 12)).foregroundStyle(.moveMuted)
+                Text("\(activity.venue) · \(activity.time)").font(.system(size: 12)).foregroundStyle(Color.moveMuted)
             }
             Spacer()
-            Image(systemName: "chevron.right").font(.system(size: 12, weight: .bold)).foregroundStyle(.moveMuted)
+            Image(systemName: "chevron.right").font(.system(size: 12, weight: .bold)).foregroundStyle(Color.moveMuted)
         }
         .padding(12)
         .background(Color.moveCard, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
@@ -667,10 +667,10 @@ struct ProgressDashboardView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Эта неделя").font(.system(size: 19, weight: .bold, design: .rounded))
-                                Text("Ты набираешь темп").font(.system(size: 13)).foregroundStyle(.moveMuted)
+                                Text("Ты набираешь темп").font(.system(size: 13)).foregroundStyle(Color.moveMuted)
                             }
                             Spacer()
-                            Text("12,4 км").font(.system(size: 15, weight: .bold, design: .rounded)).foregroundStyle(.moveLime)
+                            Text("12,4 км").font(.system(size: 15, weight: .bold, design: .rounded)).foregroundStyle(Color.moveLime)
                         }
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(bars.indices, id: \.self) { index in
@@ -680,7 +680,7 @@ struct ProgressDashboardView: View {
                                         .frame(height: 108 * bars[index])
                                     Text(["ПН","ВТ","СР","ЧТ","ПТ","СБ","ВС"][index])
                                         .font(.system(size: 9, weight: .bold))
-                                        .foregroundStyle(.moveMuted)
+                                        .foregroundStyle(Color.moveMuted)
                                 }
                                 .frame(maxWidth: .infinity)
                             }
@@ -710,9 +710,9 @@ struct ProgressStat: View {
     let icon: String
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Image(systemName: icon).foregroundStyle(.moveLime)
+            Image(systemName: icon).foregroundStyle(Color.moveLime)
             Text(value).font(.system(size: 25, weight: .black, design: .rounded))
-            Text(label).font(.system(size: 12)).foregroundStyle(.moveMuted)
+            Text(label).font(.system(size: 12)).foregroundStyle(Color.moveMuted)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(17)
@@ -735,10 +735,10 @@ struct AchievementRow: View {
                 .background(Color.white.opacity(0.06), in: RoundedRectangle(cornerRadius: 14))
             VStack(alignment: .leading, spacing: 3) {
                 Text(title).font(.system(size: 15, weight: .bold, design: .rounded))
-                Text(detail).font(.system(size: 12)).foregroundStyle(.moveMuted)
+                Text(detail).font(.system(size: 12)).foregroundStyle(Color.moveMuted)
             }
             Spacer()
-            if unlocked { Image(systemName: "checkmark.seal.fill").foregroundStyle(.moveLime) }
+            if unlocked { Image(systemName: "checkmark.seal.fill").foregroundStyle(Color.moveLime) }
         }
         .padding(12)
         .background(Color.moveCard, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
@@ -758,26 +758,26 @@ struct ProfileView: View {
                 VStack(spacing: 22) {
                     VStack(spacing: 13) {
                         ZStack {
-                            Circle().fill(.moveLime).frame(width: 94, height: 94)
+                            Circle().fill(Color.moveLime).frame(width: 94, height: 94)
                             Image(systemName: "person.fill").font(.system(size: 43, weight: .medium)).foregroundStyle(.black)
                         }
                         Text("Привет, Алекс!").font(.system(size: 25, weight: .black, design: .rounded))
-                        Text("Каждый шаг имеет значение").font(.system(size: 14)).foregroundStyle(.moveMuted)
+                        Text("Каждый шаг имеет значение").font(.system(size: 14)).foregroundStyle(Color.moveMuted)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 28)
                     .background(Color.moveCard, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
                     VStack(spacing: 0) {
                         ProfileSettingRow(symbol: "bell.badge", title: "Напоминания") {
-                            Toggle("Напоминания", isOn: $notificationsEnabled).labelsHidden().tint(.moveLime)
+                            Toggle("Напоминания", isOn: $notificationsEnabled).labelsHidden().tint(Color.moveLime)
                         }
                         Divider().overlay(.white.opacity(0.08))
                         ProfileSettingRow(symbol: "bookmark", title: "Сохранённые активности") {
-                            Text("0").font(.system(size: 14)).foregroundStyle(.moveMuted)
+                            Text("0").font(.system(size: 14)).foregroundStyle(Color.moveMuted)
                         }
                         Divider().overlay(.white.opacity(0.08))
                         ProfileSettingRow(symbol: "hand.raised", title: "Конфиденциальность") {
-                            Image(systemName: "chevron.right").font(.system(size: 12, weight: .bold)).foregroundStyle(.moveMuted)
+                            Image(systemName: "chevron.right").font(.system(size: 12, weight: .bold)).foregroundStyle(Color.moveMuted)
                         }
                     }
                     .padding(.horizontal, 15)
@@ -792,7 +792,7 @@ struct ProfileView: View {
                             .padding(15)
                             .background(Color.moveCard, in: RoundedRectangle(cornerRadius: 15))
                     }
-                    .tint(.moveMuted)
+                    .tint(Color.moveMuted)
                 }
                 .padding(20)
             }
@@ -815,7 +815,7 @@ struct ProfileSettingRow<Accessory: View>: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: symbol).font(.system(size: 16, weight: .semibold)).foregroundStyle(.moveLime).frame(width: 25)
+            Image(systemName: symbol).font(.system(size: 16, weight: .semibold)).foregroundStyle(Color.moveLime).frame(width: 25)
             Text(title).font(.system(size: 15, weight: .medium))
             Spacer()
             accessory
